@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<!-- Only these sources may load or receive data. If your Supabase project uses a custom domain, add it to connect-src. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>The Study</title>
+<meta name="theme-color" content="#EBE8E0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181916" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --serif:'Newsreader','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+  --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --paper:#EBE8E0;--leaf:#F5F3EE;--ink:#23211D;--ink-2:#56524A;--ink-3:#86817A;
+  --rule:#D3CEC2;--accent:#33564A;--accent-ink:#F3F1EC;--accent-soft:#D8E3DC;--warn:#9A3B2B;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#181916;--leaf:#20211D;--ink:#E6E1D5;--ink-2:#B4AD9F;--ink-3:#7F7A6F;
+    --rule:#373830;--accent:#95BAA6;--accent-ink:#141512;--accent-soft:#26332C;--warn:#E09A88;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#181916;--leaf:#20211D;--ink:#E6E1D5;--ink-2:#B4AD9F;--ink-3:#7F7A6F;
+  --rule:#373830;--accent:#95BAA6;--accent-ink:#141512;--accent-soft:#26332C;--warn:#E09A88;color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.6;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1:focus{outline:none}
+
+.wrap{max-width:620px;margin:0 auto;padding:28px 22px 80px}
+.tabs{display:flex;gap:6px;font-family:var(--sans);font-size:15px;margin-bottom:44px;border-bottom:1px solid var(--rule);overflow-x:auto}
+.tabs button{background:none;border:0;padding:10px 14px 12px;color:var(--ink-3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+.date{font-family:var(--sans);font-size:14px;color:var(--ink-3);margin:0 0 4px}
+h1{font-weight:400;font-size:clamp(2rem,6vw,2.6rem);line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-weight:500;font-size:1.25rem;margin:0 0 4px}
+.hint{color:var(--ink-3);font-size:.95rem;margin:0 0 16px;font-style:italic}
+section{margin-top:40px}
+
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.list li:first-child{border-top:1px solid var(--rule)}
+.list li span{flex:1;padding-top:1px;word-break:break-word}
+.list li.done span{color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1px}
+.check{appearance:none;flex:none;width:22px;height:22px;margin:4px 0 0;border:1.5px solid var(--ink-3);border-radius:50%;cursor:pointer;display:grid;place-items:center;background:var(--leaf)}
+.check:checked{background:var(--accent);border-color:var(--accent)}
+.check:checked::after{content:"";width:6px;height:11px;border:solid var(--accent-ink);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.x{background:none;border:0;color:var(--ink-3);font-family:var(--sans);font-size:13px;padding:4px 2px;opacity:.7}
+.x:hover,.x:focus-visible{opacity:1;color:var(--ink)}
+
+.add{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.field{flex:1;min-width:0;background:var(--leaf);border:1px solid var(--rule);border-radius:10px;padding:11px 14px;font-size:1rem}
+.field::placeholder{color:var(--ink-3)}
+.field:focus{outline:none;border-color:var(--accent)}
+select.field{flex:none;width:auto;font-family:var(--sans);font-size:15px}
+textarea.field{width:100%;resize:vertical;min-height:72px;line-height:1.5}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:11px 18px;font-family:var(--sans);font-size:15px;font-weight:500}
+.btn.quiet{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.link{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.muted{color:var(--ink-3)}
+.carry{margin-top:14px;color:var(--ink-3);font-size:.95rem}
+.lastweek{margin:-4px 0 18px;padding-left:14px;border-left:2px solid var(--accent-soft);color:var(--ink-2);font-size:.98rem}
+.lastweek em{display:block;font-family:var(--sans);font-style:normal;font-size:13px;color:var(--ink-3)}
+
+.weeknav{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:14px;margin-bottom:10px}
+.weeknav button{background:none;border:0;color:var(--accent);padding:4px 0}
+.prio{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.prio .check{margin:0}
+.q{display:block;margin-bottom:18px}
+.q span{display:block;margin-bottom:6px;color:var(--ink-2)}
+
+.area{margin-top:30px}
+.area h3{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink-2);margin:0 0 6px}
+.empty{padding:22px 0;color:var(--ink-3);font-style:italic}
+
+.tally{display:flex;gap:40px;flex-wrap:wrap;margin:26px 0 8px}
+.tally div{min-width:120px}
+.tally b{display:block;font-weight:400;font-size:2.6rem;line-height:1;color:var(--accent)}
+.tally span{font-family:var(--sans);font-size:14px;color:var(--ink-2)}
+.bars{display:grid;grid-template-columns:auto 1fr auto;gap:12px 14px;align-items:center;font-size:.98rem}
+.bar{height:8px;border-radius:99px;background:var(--rule);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.num{font-family:var(--sans);font-size:13px;color:var(--ink-3);white-space:nowrap}
+.wins li{align-items:baseline}
+.wins .when{flex:none;font-family:var(--sans);font-size:13px;color:var(--ink-3);min-width:62px}
+.wins .where{flex:none;font-family:var(--sans);font-size:13px;color:var(--ink-3)}
+.weeks{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;align-items:center}
+.dots{display:flex;gap:6px}
+.dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink-3)}
+.dots i.on{background:var(--accent);border-color:var(--accent)}
+.dots i.none{border-style:dashed;opacity:.5}
+
+.signin{max-width:380px;margin-top:30px}
+.signin .q span{font-family:var(--sans);font-size:14px}
+.err{color:var(--warn);font-family:var(--sans);font-size:14px;min-height:1.4em;margin:12px 0 0}
+
+.foot{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:14px;color:var(--ink-3)}
+.foot .status{margin:0 0 8px}
+.foot .status.bad{color:var(--warn)}
+.foot summary{cursor:pointer;color:var(--ink-2);padding:4px 0;width:max-content}
+.foot .q{margin:16px 0 0;max-width:320px}
+.foot .q span{color:var(--ink-2)}
+.foot .field{width:100%}
+.foot .row{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+.foot .account{margin:16px 0 0}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  display:flex;gap:18px;align-items:center;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:10px;
+  font-family:var(--sans);font-size:15px;width:max-content;max-width:calc(100% - 32px);box-shadow:0 8px 28px rgba(0,0,0,.2);z-index:10}
+.toast span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast .link{color:var(--paper);flex:none}
+
+@media (max-width:480px){.add select.field{flex:1 1 100%}}
+@media (prefers-reduced-motion:no-preference){.enter{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrap">
+  <nav class="tabs" role="tablist" aria-label="Sections" hidden>
+    <button role="tab" data-tab="today" aria-controls="app">Today</button>
+    <button role="tab" data-tab="week" aria-controls="app">This week</button>
+    <button role="tab" data-tab="goals" aria-controls="app">Goals</button>
+    <button role="tab" data-tab="progress" aria-controls="app">Progress</button>
+  </nav>
+  <main id="app" role="tabpanel"><p class="empty">Opening…</p></main>
+  <footer class="foot" id="foot" hidden>
+    <p class="status" id="status"></p>
+    <details>
+      <summary>Settings and backup</summary>
+      <label class="q"><span>Your name, for the greeting</span><input class="field" id="nameField" maxlength="40" autocomplete="given-name"></label>
+      <div class="row">
+        <button class="btn quiet" id="exportBtn" type="button">Download a backup</button>
+        <button class="btn quiet" id="importBtn" type="button">Restore from a backup</button>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+      <p class="account" id="account" hidden>Signed in as <span id="who"></span>. <button class="link" id="signOutBtn" type="button">Sign out</button></p>
+    </details>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+/* =====================================================================
+   SETUP — paste your Supabase project details here (see README.md).
+   Leave both blank to keep everything on this device only.
+   Use the publishable (or "anon") key. NEVER the secret / service_role key.
+   ===================================================================== */
+const SUPABASE_URL = '';   // e.g. 'https://abcdefghijkl.supabase.co'
+const SUPABASE_KEY = '';   // e.g. 'sb_publishable_...' or the long anon key
+
+/* ---------- dates ---------- */
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const today=()=>iso(new Date());
+const parseISO=s=>{const [y,m,d]=String(s).split('-').map(Number);return new Date(y,(m||1)-1,d||1)};
+const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function weekKey(s=today()){
+  const d=parseISO(s);const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  const day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);
+  const y0=new Date(Date.UTC(t.getUTCFullYear(),0,1));
+  return `${t.getUTCFullYear()}-W${pad(Math.ceil(((t-y0)/864e5+1)/7))}`;
+}
+function weekStart(key){const [y,w]=key.split('-W').map(Number);const j4=new Date(y,0,4);const dow=j4.getDay()||7;return new Date(y,0,4-dow+1+(w-1)*7)}
+const shiftWeek=(k,n)=>weekKey(iso(addDays(weekStart(k),7*n)));
+const weekLabel=k=>{const d=weekStart(k);return `Week of ${d.getDate()} ${MONTHS[d.getMonth()]}${d.getFullYear()!==new Date().getFullYear()?' '+d.getFullYear():''}`};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s);
+
+const AREAS=[
+  ['presence','Inner life'],['career','Work'],['education','Education'],['health','Health'],
+  ['money','Money'],['intellect','Reading & creating'],['ordinary','Relationships']
+];
+
+/* ---------- data on this device ---------- */
+const KEY='the-study:simple:v1', OLD_KEY='the-study:v1';
+function fresh(){
+  return {name:'',today:{date:'',items:[],carried:[]},weeks:{},goals:[],meta:{updatedAt:0,owner:null}};
+}
+function fromOld(old){
+  // Brings over what was written in the earlier, bigger version.
+  if(!old||!old.state)return null;
+  const o=old.state,s=fresh();
+  s.name=(o.settings&&o.settings.name)||'';
+  if(o.today&&Array.isArray(o.today.items))s.today={date:o.today.date||'',items:o.today.items.map(i=>({id:i.id||uid(),text:i.text,done:!!i.done})),carried:o.today.carried||[]};
+  for(const [k,w] of Object.entries(o.weeks||{})){
+    s.weeks[k]={p1:w.p1||'',p2:w.p2||'',p3:w.p3||'',p1done:!!w.p1done,p2done:!!w.p2done,p3done:!!w.p3done,
+      good:[w.r_done,w.r_joy].filter(Boolean).join('\n'),hard:w.r_hard||'',next:w.r_carry||''};
+  }
+  if(Array.isArray(o.goals)){
+    const g=o.goals.filter(x=>!x.archived&&x.status!=='nolonger'&&x.title);
+    if(g.length)s.goals=g.map(x=>({id:x.id||uid(),text:x.title,area:x.area||'ordinary',done:x.status==='completed',doneDate:x.status==='completed'?(x.completedDate||''):''}));
+  }
+  return s;
+}
+function normalize(s){
+  if(!s||typeof s!=='object')return null;
+  if(s.state&&!s.goals&&!s.weeks)return fromOld(s);
+  const f=fresh();
+  return {
+    name:typeof s.name==='string'?s.name:'',
+    today:s.today&&Array.isArray(s.today.items)?{date:s.today.date||'',items:s.today.items,carried:s.today.carried||[]}:f.today,
+    weeks:s.weeks&&typeof s.weeks==='object'?s.weeks:{},
+    goals:Array.isArray(s.goals)?s.goals:[],
+    meta:{...f.meta,...(s.meta||{})}
+  };
+}
+function loadLocal(){
+  let s=null;
+  try{s=normalize(JSON.parse(localStorage.getItem(KEY)||'null'))}catch(e){}
+  if(!s){try{s=fromOld(JSON.parse(localStorage.getItem(OLD_KEY)||'null'))}catch(e){}}
+  return s||fresh();
+}
+let state=loadLocal();
+
+// touch=false is for housekeeping (like rolling over to a new day) that shouldn't count as an edit.
+function save(touch=true){
+  if(touch)state.meta.updatedAt=Date.now();
+  try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+  if(touch)schedulePush();
+}
+
+function todayState(){
+  const t=state.today;
+  if(t.date!==today()){
+    const left=(t.items||[]).filter(i=>!i.done&&i.text).map(i=>i.text);
+    state.today={date:today(),items:[],carried:t.date?left.slice(0,3):[]};save(false);
+  }
+  return state.today;
+}
+
+/* ---------- account sync (Supabase) ---------- */
+const CLOUD=!!(SUPABASE_URL&&SUPABASE_KEY);
+let sb=null,user=null,pushTimer=null,pushing=false,pushAgain=false,syncState='local';
+const STATUS={
+  local:'Saved on this device only.',
+  syncing:'Saving…',
+  synced:'Saved to your account.',
+  offline:'Offline. Changes are saved on this device and will sync when you’re back online.',
+  error:'Couldn’t reach your account. Changes are saved on this device and will sync on the next try.',
+  setup:'Signed in, but the planner table isn’t set up yet. Run supabase.sql in your Supabase project.'
+};
+function setStatus(k){
+  syncState=k;const el=$('#status');
+  el.textContent=STATUS[k];el.classList.toggle('bad',k==='error'||k==='setup');
+}
+function syncError(e){
+  const m=String(e&&(e.message||e.code)||'');
+  setStatus(/planner|relation|schema cache|PGRST205|42P01/i.test(m)?'setup':navigator.onLine?'error':'offline');
+}
+async function pushNow(){
+  if(!sb||!user)return;
+  clearTimeout(pushTimer);
+  if(pushing){pushAgain=true;return}
+  pushing=true;setStatus('syncing');
+  try{
+    const {error}=await sb.from('planner').upsert({user_id:user.id,data:state,updated_at:new Date().toISOString()});
+    if(error)throw error;
+    setStatus('synced');
+  }catch(e){syncError(e)}
+  finally{pushing=false;if(pushAgain){pushAgain=false;await pushNow()}}
+}
+function schedulePush(){
+  if(!sb||!user)return;
+  clearTimeout(pushTimer);setStatus('syncing');pushTimer=setTimeout(pushNow,900);
+}
+async function syncNow(){
+  if(!sb||!user)return;
+  try{
+    setStatus('syncing');
+    const {data,error}=await sb.from('planner').select('data').eq('user_id',user.id).maybeSingle();
+    if(error)throw error;
+    const remote=data?normalize(data.data):null;
+    const lt=state.meta.updatedAt||0, rt=remote?(remote.meta.updatedAt||0):-1;
+    if(remote&&rt>lt){
+      // The account has newer changes (from another device): use them.
+      state=remote;state.meta.owner=user.id;save(false);fillSettings();render();setStatus('synced');
+    }else if(!remote||lt>rt){await pushNow()}
+    else setStatus('synced');
+  }catch(e){syncError(e)}
+}
+
+/* ---------- views ---------- */
+let tab='today',wk=weekKey(),mode='loading',lastTab=null;
+try{const t=sessionStorage.getItem('study-tab');if(['today','week','goals','progress'].includes(t))tab=t}catch(e){}
+const app=$('#app'),tabsEl=$('.tabs');
+
+function vToday(){
+  const T=todayState();const h=new Date().getHours();
+  const hello=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+  const d=new Date();
+  const carried=(T.carried||[]).filter(c=>!T.items.some(i=>i.text===c));
+  return `<p class="date">${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]}</p>
+  <h1 tabindex="-1">${hello}${state.name?', '+esc(state.name):''}.</h1>
+  <section>
+    <h2>For today</h2>
+    <p class="hint">One to three things. That’s the whole list.</p>
+    ${T.items.length?`<ul class="list">${T.items.map(i=>`<li class="${i.done?'done':''}"><input type="checkbox" class="check" data-act="tToggle" data-id="${i.id}" ${i.done?'checked':''} aria-label="Done: ${esc(i.text)}"><span>${esc(i.text)}</span><button class="x" data-act="tRemove" data-id="${i.id}" aria-label="Remove ${esc(i.text)}">Remove</button></li>`).join('')}</ul>`:''}
+    ${T.items.length<3?`<form class="add" data-form="tAdd"><input class="field" name="text" maxlength="160" placeholder="${T.items.length?'Another thing, if it matters':'What would make today feel cared for?'}" aria-label="Add something for today"><button class="btn">Add</button></form>`:`<p class="hint" style="margin-top:14px">Three is plenty.</p>`}
+    ${carried.length&&T.items.length<3?`<p class="carry">Left from yesterday: ${carried.map(c=>`<button class="link" data-act="tCarry" data-text="${esc(c)}">${esc(c)}</button>`).join(', ')}</p>`:''}
+  </section>`;
+}
+
+function vWeek(){
+  const w=state.weeks[wk]||{};const now=weekKey();
+  const prev=state.weeks[shiftWeek(wk,-1)]||{};
+  const prio=n=>`<div class="prio"><input type="checkbox" class="check" data-wbind="p${n}done" ${w['p'+n+'done']?'checked':''} aria-label="Priority ${n} done"><input class="field" data-wbind="p${n}" value="${esc(w['p'+n]||'')}" placeholder="${n===1?'The thing that matters most':'Something else that matters'}" aria-label="Priority ${n}"></div>`;
+  const q=(label,key,ph)=>`<label class="q"><span>${label}</span><textarea class="field" data-wbind="${key}" rows="2" placeholder="${ph}">${esc(w[key]||'')}</textarea></label>`;
+  return `<div class="weeknav"><button data-act="wShift" data-n="-1">Previous week</button>${wk!==now?`<button data-act="wNow">Back to this week</button>`:''}<button data-act="wShift" data-n="1">Next week</button></div>
+  <h1 tabindex="-1">${weekLabel(wk)}</h1>
+  <section>
+    <h2>What matters this week?</h2>
+    <p class="hint">Three at most. Unfinished isn’t failed.</p>
+    ${prev.next&&prev.next.trim()?`<p class="lastweek"><em>Last week you wanted to bring in</em>${esc(prev.next).replace(/\n/g,'<br>')}</p>`:''}
+    ${prio(1)}${prio(2)}${prio(3)}
+  </section>
+  <section>
+    <h2>End-of-week check-in</h2>
+    <p class="hint">Whenever you get to it.</p>
+    ${q('What went well?','good','Big or small')}
+    ${q('What was hard?','hard','It’s fine to be honest here')}
+    ${q('What do I want to bring into next week?','next','Anything worth keeping')}
+  </section>`;
+}
+
+function vGoals(){
+  const active=AREAS.filter(([id])=>state.goals.some(g=>g.area===id));
+  return `<h1 tabindex="-1">Goals</h1>
+  <p class="hint" style="margin-top:6px">Directions, not deadlines. Tick one off when it’s done.</p>
+  <form class="add" data-form="gAdd"><input class="field" name="text" maxlength="200" placeholder="A new goal" aria-label="New goal">
+    <select class="field" name="area" aria-label="Life area">${AREAS.map(([id,n])=>`<option value="${id}">${n}</option>`).join('')}</select>
+    <button class="btn">Add</button></form>
+  ${active.length?active.map(([id,name])=>{const gs=state.goals.filter(g=>g.area===id).sort((a,b)=>a.done-b.done);
+    return `<div class="area"><h3>${name}</h3><ul class="list">${gs.map(g=>`<li class="${g.done?'done':''}"><input type="checkbox" class="check" data-act="gToggle" data-id="${g.id}" ${g.done?'checked':''} aria-label="Done: ${esc(g.text)}"><span>${esc(g.text)}</span><button class="x" data-act="gRemove" data-id="${g.id}" aria-label="Remove ${esc(g.text)}">Remove</button></li>`).join('')}</ul></div>`}).join('')
+  :`<p class="empty">No goals yet. Add one above whenever you’re ready.</p>`}`;
+}
+
+function vProgress(){
+  const done=state.goals.filter(g=>g.done);
+  const now=weekKey();
+  const weeks=[];for(let i=0;i<8;i++)weeks.push(shiftWeek(now,-i));
+  let prios=0;for(const w of Object.values(state.weeks))for(const n of [1,2,3])if(w['p'+n]&&w['p'+n+'done'])prios++;
+  const areas=AREAS.filter(([id])=>state.goals.some(g=>g.area===id));
+  const areaName=id=>(AREAS.find(a=>a[0]===id)||['',''])[1];
+  const fmtD=s=>{if(!s)return '';const d=parseISO(s);return `${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}${d.getFullYear()!==new Date().getFullYear()?' '+d.getFullYear():''}`};
+  const wins=done.slice().sort((a,b)=>(b.doneDate||'').localeCompare(a.doneDate||''));
+  return `<h1 tabindex="-1">Progress</h1>
+  <p class="hint" style="margin-top:6px">Everything you’ve moved forward, in one place.</p>
+  <div class="tally">
+    <div><b>${done.length}</b><span>goal${done.length===1?'':'s'} finished</span></div>
+    <div><b>${state.goals.length-done.length}</b><span>still going</span></div>
+    <div><b>${prios}</b><span>weekly priorit${prios===1?'y':'ies'} done</span></div>
+  </div>
+  <section>
+    <h2>By life area</h2>
+    ${areas.length?`<div class="bars" style="margin-top:16px">${areas.map(([id,name])=>{const all=state.goals.filter(g=>g.area===id),d=all.filter(g=>g.done).length;
+      return `<span>${name}</span><div class="bar" role="img" aria-label="${d} of ${all.length} done"><i style="width:${all.length?Math.round(d/all.length*100):0}%"></i></div><span class="num">${d} of ${all.length}</span>`}).join('')}</div>`
+      :`<p class="empty">Add a goal in the Goals tab and it will show up here.</p>`}
+  </section>
+  <section>
+    <h2>Accomplished</h2>
+    ${wins.length?`<ul class="list wins" style="margin-top:14px">${wins.map(g=>`<li><span class="when">${fmtD(g.doneDate)||'Earlier'}</span><span>${esc(g.text)}</span><span class="where">${areaName(g.area)}</span></li>`).join('')}</ul>`
+      :`<p class="empty">Nothing ticked off yet. When you finish a goal, it lands here with the date.</p>`}
+  </section>
+  <section>
+    <h2>Recent weeks</h2>
+    <p class="hint">Each dot is one weekly priority. Filled means done.</p>
+    <div class="weeks">${weeks.map(k=>{const w=state.weeks[k]||{};
+      const dots=[1,2,3].map(n=>w['p'+n]?`<i class="${w['p'+n+'done']?'on':''}" title="${esc(w['p'+n])}"></i>`:'').join('');
+      return `<span class="num" style="font-size:14px">${k===now?'This week':weekLabel(k).replace('Week of ','')}</span><div class="dots">${dots||'<i class="none"></i>'}</div>`}).join('')}</div>
+  </section>`;
+}
+
+function vSignIn(msg){
+  return `<div class="enter"><h1 tabindex="-1">The Study</h1>
+  <p class="hint" style="margin-top:6px">Sign in to open your plans.</p>
+  <form class="signin" data-form="signIn">
+    <label class="q"><span>Email</span><input class="field" type="email" name="email" autocomplete="username" required></label>
+    <label class="q"><span>Password</span><input class="field" type="password" name="password" autocomplete="current-password" required></label>
+    <button class="btn">Sign in</button>
+    <p class="err" role="alert">${msg?esc(msg):''}</p>
+  </form></div>`;
+}
+
+// Remember what had keyboard focus so re-rendering doesn't throw it back to the top.
+function focusInfo(){
+  const el=document.activeElement;
+  if(!el||!app.contains(el))return null;
+  const parts=[...el.attributes].filter(a=>a.name.startsWith('data-')&&a.name!=='data-text').map(a=>`[${a.name}="${CSS.escape(a.value)}"]`);
+  if(el.name)parts.push(`[name="${CSS.escape(el.name)}"]`);
+  if(!parts.length)return null;
+  let sel=null;try{if(typeof el.selectionStart==='number')sel=[el.selectionStart,el.selectionEnd]}catch(e){}
+  return {q:el.tagName.toLowerCase()+parts.join(''),sel};
+}
+function render(){
+  if(mode!=='app')return;
+  tabsEl.querySelectorAll('[data-tab]').forEach(b=>{const on=b.dataset.tab===tab;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1});
+  const f=focusInfo();
+  const enter=lastTab!==tab;lastTab=tab;
+  app.innerHTML=`<div class="view${enter?' enter':''}">${tab==='today'?vToday():tab==='week'?vWeek():tab==='goals'?vGoals():vProgress()}</div>`;
+  if(f){
+    const n=app.querySelector(f.q);
+    if(n){n.focus({preventScroll:true});if(f.sel)try{n.setSelectionRange(f.sel[0],f.sel[1])}catch(e){}}
+    else{const h=app.querySelector('h1');if(h)h.focus({preventScroll:true})}
+  }
+}
+function fillSettings(){
+  $('#nameField').value=state.name||'';
+  $('#account').hidden=!user;
+  if(user)$('#who').textContent=user.email||'your account';
+}
+function showApp(){
+  mode='app';tabsEl.hidden=false;$('#foot').hidden=false;fillSettings();render();
+}
+function showSignIn(msg){
+  mode='signin';tabsEl.hidden=true;$('#foot').hidden=true;hideToast();
+  app.innerHTML=vSignIn(msg);
+}
+
+/* ---------- undo ---------- */
+let undoFn=null,toastTimer=null;
+function toast(msg,undo){
+  const t=$('#toast');undoFn=undo||null;
+  t.innerHTML=`<span>${esc(msg)}</span>${undo?'<button class="link" type="button" data-undo>Undo</button>':''}`;
+  t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(hideToast,7000);
+}
+function hideToast(){$('#toast').hidden=true;undoFn=null}
+$('#toast').addEventListener('click',e=>{
+  if(!e.target.closest('[data-undo]')||!undoFn)return;
+  undoFn();save();render();hideToast();
+});
+
+/* ---------- actions ---------- */
+function selectTab(t,focus){
+  tab=t;try{sessionStorage.setItem('study-tab',tab)}catch(e){}
+  render();if(focus)tabsEl.querySelector(`[data-tab="${t}"]`).focus();
+}
+tabsEl.addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b)selectTab(b.dataset.tab)});
+tabsEl.addEventListener('keydown',e=>{
+  const ids=['today','week','goals','progress'];let i=ids.indexOf(tab);
+  if(e.key==='ArrowRight')i=(i+1)%4;else if(e.key==='ArrowLeft')i=(i+3)%4;
+  else if(e.key==='Home')i=0;else if(e.key==='End')i=3;else return;
+  e.preventDefault();selectTab(ids[i],true);
+});
+app.addEventListener('click',e=>{
+  const el=e.target.closest('[data-act]');if(!el)return;const id=el.dataset.id;
+  const acts={
+    tToggle(){const i=todayState().items.find(x=>x.id===id);if(i)i.done=!i.done},
+    tRemove(){
+      const T=todayState(),at=T.items.findIndex(x=>x.id===id);if(at<0)return;
+      const [it]=T.items.splice(at,1);
+      toast(`Removed “${it.text}”`,()=>{const T=todayState();T.items.splice(Math.min(at,T.items.length),0,it)});
+    },
+    tCarry(){const T=todayState();if(T.items.length<3)T.items.push({id:uid(),text:el.dataset.text,done:false})},
+    gToggle(){const g=state.goals.find(x=>x.id===id);if(g){g.done=!g.done;g.doneDate=g.done?today():''}},
+    gRemove(){
+      const at=state.goals.findIndex(x=>x.id===id);if(at<0)return;
+      const [g]=state.goals.splice(at,1);
+      toast(`Removed “${g.text}”`,()=>{state.goals.splice(Math.min(at,state.goals.length),0,g)});
+    },
+    wShift(){wk=shiftWeek(wk,+el.dataset.n);return 'view'},
+    wNow(){wk=weekKey();return 'view'}
+  };
+  const a=acts[el.dataset.act];if(!a)return;
+  const r=a();if(r!=='view')save();render();
+});
+app.addEventListener('submit',async e=>{
+  e.preventDefault();const f=e.target;const val=n=>{const x=f.querySelector(`[name=${n}]`);return x?x.value:''};
+  if(f.dataset.form==='signIn'){
+    const btn=f.querySelector('button'),err=f.querySelector('.err');
+    btn.disabled=true;btn.textContent='Signing in…';err.textContent='';
+    const {error}=await sb.auth.signInWithPassword({email:val('email').trim(),password:val('password')});
+    if(error){
+      btn.disabled=false;btn.textContent='Sign in';
+      err.textContent=/invalid/i.test(error.message)?'That email and password don’t match an account. Check them and try again.'
+        :navigator.onLine?`Sign-in didn’t work: ${error.message}`:'You’re offline. Connect to the internet and try again.';
+    }
+    return; // a successful sign-in is picked up by onAuth()
+  }
+  const text=val('text').trim();if(!text)return;
+  if(f.dataset.form==='tAdd'){const T=todayState();if(T.items.length<3)T.items.push({id:uid(),text,done:false})}
+  if(f.dataset.form==='gAdd'){state.goals.push({id:uid(),text,area:val('area'),done:false})}
+  save();render();
+  const again=app.querySelector(`[data-form="${f.dataset.form}"] input[name=text]`);if(again)again.focus();
+});
+function bindWeek(el){
+  const k=el.dataset.wbind;const w=state.weeks[wk]=state.weeks[wk]||{};
+  w[k]=el.type==='checkbox'?el.checked:el.value;save();
+}
+app.addEventListener('input',e=>{if(e.target.dataset.wbind&&e.target.type!=='checkbox')bindWeek(e.target)});
+app.addEventListener('change',e=>{if(e.target.dataset.wbind&&e.target.type==='checkbox')bindWeek(e.target)});
+
+/* ---------- settings and backup ---------- */
+$('#nameField').addEventListener('input',e=>{state.name=e.target.value.trim();save();render()});
+$('#exportBtn').addEventListener('click',()=>{
+  const {meta,...data}=state;
+  const blob=new Blob([JSON.stringify({app:'the-study',exported:new Date().toISOString(),...data},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`the-study-backup-${today()}.json`;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+});
+$('#importBtn').addEventListener('click',()=>$('#importFile').click());
+$('#importFile').addEventListener('change',async e=>{
+  const file=e.target.files[0];e.target.value='';if(!file)return;
+  let data=null;try{data=normalize(JSON.parse(await file.text()))}catch(err){}
+  if(!data){toast('That file isn’t a backup from The Study.');return}
+  if(!confirm('Replace everything here with this backup? What’s here now will be overwritten.'))return;
+  data.meta.owner=user?user.id:null;state=data;save();fillSettings();render();toast('Backup restored.');
+});
+$('#signOutBtn').addEventListener('click',async()=>{
+  if(!confirm('Sign out? Your plans stay in your account and are cleared from this device.'))return;
+  await pushNow();
+  if(syncState!=='synced'&&!confirm('Some recent changes haven’t reached your account yet. Sign out anyway and lose them?'))return;
+  try{await sb.auth.signOut({scope:'local'})}catch(e){}
+  try{localStorage.removeItem(KEY);localStorage.removeItem(OLD_KEY)}catch(e){}
+  state=fresh();user=null;showSignIn();
+});
+
+/* ---------- keeping things current ---------- */
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState!=='visible'||mode!=='app')return;
+  render();syncNow(); // catches a new day, and changes made on another device
+});
+window.addEventListener('online',()=>{if(user)syncNow()});
+window.addEventListener('pagehide',()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}});
+
+/* ---------- start ---------- */
+function onAuth(event,session){
+  const u=session&&session.user;
+  if(!u){if(event==='INITIAL_SESSION'||event==='SIGNED_OUT'){user=null;showSignIn()}return}
+  if(user&&user.id===u.id)return; // token refreshes etc.
+  user=u;
+  if(state.meta.owner&&state.meta.owner!==u.id)state=fresh(); // never mix two people's data
+  state.meta.owner=u.id;save(false);
+  showApp();syncNow();
+}
+(function boot(){
+  if(!CLOUD){showApp();setStatus('local');return}
+  if(!window.supabase){
+    if(state.meta.owner){showApp();setStatus('offline')}
+    else showSignIn('Couldn’t load the sign-in service. Check your connection and reload.');
+    return;
+  }
+  sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+  // Supabase advises not calling it from inside this callback, so hand off first.
+  sb.auth.onAuthStateChange((event,session)=>setTimeout(()=>onAuth(event,session),0));
+})();
+</script>
+</body>
+</html>
