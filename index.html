@@ -8,6 +8,9 @@
 <!-- Only these sources may load or receive data. If your Supabase project uses a custom domain, add it to connect-src. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>The Study</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2333564A'/%3E%3Ccircle cx='32' cy='32' r='18.5' fill='none' stroke='%23F3F1EC' stroke-width='5'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23F3F1EC'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-title" content="The Study">
 <meta name="theme-color" content="#EBE8E0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#181916" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,92 +25,134 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
   --serif:'Newsreader','Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
   --sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --paper:#EBE8E0;--leaf:#F5F3EE;--ink:#23211D;--ink-2:#56524A;--ink-3:#86817A;
+  --paper:#EBE8E0;--leaf:#F5F3EE;--ink:#23211D;--ink-2:#56524A;--ink-3:#7E7970;
   --rule:#D3CEC2;--accent:#33564A;--accent-ink:#F3F1EC;--accent-soft:#D8E3DC;--warn:#9A3B2B;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#181916;--leaf:#20211D;--ink:#E6E1D5;--ink-2:#B4AD9F;--ink-3:#7F7A6F;
+    --paper:#181916;--leaf:#20211D;--ink:#E6E1D5;--ink-2:#B4AD9F;--ink-3:#8A857A;
     --rule:#373830;--accent:#95BAA6;--accent-ink:#141512;--accent-soft:#26332C;--warn:#E09A88;color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#181916;--leaf:#20211D;--ink:#E6E1D5;--ink-2:#B4AD9F;--ink-3:#7F7A6F;
+  --paper:#181916;--leaf:#20211D;--ink:#E6E1D5;--ink-2:#B4AD9F;--ink-3:#8A857A;
   --rule:#373830;--accent:#95BAA6;--accent-ink:#141512;--accent-soft:#26332C;--warn:#E09A88;color-scheme:dark;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6;
-  -webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
 button,input,textarea,select{font:inherit;color:inherit}
 button{cursor:pointer}
 button:disabled{opacity:.6;cursor:default}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 h1:focus{outline:none}
 
-.wrap{max-width:620px;margin:0 auto;padding:28px 22px 80px}
-.tabs{display:flex;gap:6px;font-family:var(--sans);font-size:15px;margin-bottom:44px;border-bottom:1px solid var(--rule);overflow-x:auto}
+.wrap{max-width:640px;margin:0 auto;padding:28px 22px 80px}
+.tabs{display:flex;gap:6px;font-family:var(--sans);font-size:15px;margin-bottom:44px;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
 .tabs button{background:none;border:0;padding:10px 14px 12px;color:var(--ink-3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button:hover{color:var(--ink-2)}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 
 .date{font-family:var(--sans);font-size:14px;color:var(--ink-3);margin:0 0 4px}
 h1{font-weight:400;font-size:clamp(2rem,6vw,2.6rem);line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
 h2{font-weight:500;font-size:1.25rem;margin:0 0 4px}
+h3{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink-2);margin:0 0 6px}
 .hint{color:var(--ink-3);font-size:.95rem;margin:0 0 16px;font-style:italic}
-section{margin-top:40px}
+section{margin-top:44px}
+.sub{margin-top:28px}
 
+/* lists of steps */
 .list{list-style:none;margin:0;padding:0}
 .list li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
 .list li:first-child{border-top:1px solid var(--rule)}
-.list li span{flex:1;padding-top:1px;word-break:break-word}
-.list li.done span{color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1px}
+.body{flex:1;min-width:0}
+.t{display:block;word-break:break-word}
+.list li.done .t{color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1px}
+.mrow{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;font-family:var(--sans);font-size:13px;line-height:1.5;margin-top:2px}
+.mrow:empty{display:none}
+.tag{color:var(--accent)}
+.tag::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}
+.acts{display:flex;gap:14px;margin-left:auto}
+.pill{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:500;line-height:1;padding:4px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
 .check{appearance:none;flex:none;width:22px;height:22px;margin:4px 0 0;border:1.5px solid var(--ink-3);border-radius:50%;cursor:pointer;display:grid;place-items:center;background:var(--leaf)}
 .check:checked{background:var(--accent);border-color:var(--accent)}
 .check:checked::after{content:"";width:6px;height:11px;border:solid var(--accent-ink);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
-.x{background:none;border:0;color:var(--ink-3);font-family:var(--sans);font-size:13px;padding:4px 2px;opacity:.7}
-.x:hover,.x:focus-visible{opacity:1;color:var(--ink)}
+.x{background:none;border:0;color:var(--ink-3);font-family:var(--sans);font-size:13px;padding:2px 0;white-space:nowrap}
+.x:hover,.x:focus-visible{color:var(--ink)}
+.x.go{color:var(--accent);font-weight:500}
 
+/* forms */
 .add{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
 .field{flex:1;min-width:0;background:var(--leaf);border:1px solid var(--rule);border-radius:10px;padding:11px 14px;font-size:1rem}
 .field::placeholder{color:var(--ink-3)}
 .field:focus{outline:none;border-color:var(--accent)}
-select.field{flex:none;width:auto;font-family:var(--sans);font-size:15px}
+select.field{flex:none;width:auto;max-width:100%;font-family:var(--sans);font-size:15px}
+input[type=date].field{font-family:var(--sans);font-size:15px}
 textarea.field{width:100%;resize:vertical;min-height:72px;line-height:1.5}
 .btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:11px 18px;font-family:var(--sans);font-size:15px;font-weight:500}
 .btn.quiet{background:transparent;color:var(--ink);border:1px solid var(--rule)}
 .link{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-.muted{color:var(--ink-3)}
-.carry{margin-top:14px;color:var(--ink-3);font-size:.95rem}
-.lastweek{margin:-4px 0 18px;padding-left:14px;border-left:2px solid var(--accent-soft);color:var(--ink-2);font-size:.98rem}
+.fl{display:block;margin-bottom:14px}
+.fl>span{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-bottom:5px}
+.fl .field{width:100%}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+
+/* picking steps */
+.picks{display:grid;gap:8px;margin-top:8px}
+.pick{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:transparent;border:1px dashed var(--ink-3);border-radius:10px;padding:10px 14px;color:var(--ink)}
+.pick:hover{border-style:solid;border-color:var(--accent)}
+.pick .plus{flex:none;margin-left:auto;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--accent);padding-top:3px}
+.pick .mrow{margin-top:0}
+
+/* the path from goal to today */
+.path{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;font-family:var(--sans);font-size:14px;color:var(--ink-2);margin:4px 0 0}
+.path .bar{flex:0 1 160px;min-width:80px}
+.intro{margin-top:48px;padding:22px 0 4px;border-top:1px solid var(--rule)}
+.intro ol{margin:10px 0 20px;padding-left:1.3em;color:var(--ink-2)}
+.intro li{margin-bottom:6px}
+.lastweek{margin:0 0 18px;padding-left:14px;border-left:2px solid var(--accent-soft);color:var(--ink-2);font-size:.98rem}
 .lastweek em{display:block;font-family:var(--sans);font-style:normal;font-size:13px;color:var(--ink-3)}
+.group{margin-top:22px}
+.group:first-of-type{margin-top:8px}
+.empty{padding:14px 0;color:var(--ink-3);font-style:italic;margin:0}
 
 .weeknav{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:14px;margin-bottom:10px}
 .weeknav button{background:none;border:0;color:var(--accent);padding:4px 0}
-.prio{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.prio .check{margin:0}
 .q{display:block;margin-bottom:18px}
 .q span{display:block;margin-bottom:6px;color:var(--ink-2)}
 
-.area{margin-top:30px}
-.area h3{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink-2);margin:0 0 6px}
-.empty{padding:22px 0;color:var(--ink-3);font-style:italic}
+/* goals */
+.area{margin-top:34px}
+.goal{border-bottom:1px solid var(--rule)}
+.goal:first-of-type{border-top:1px solid var(--rule)}
+.ghead{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:none;border:0;padding:16px 0;color:var(--ink)}
+.ghead .gtx{flex:1;min-width:0}
+.ghead .gt{display:block;font-size:1.15rem;line-height:1.35;word-break:break-word}
+.goal.done .gt{color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1px}
+.gmeta{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-3);margin-top:4px}
+.gwhy{display:block;font-style:italic;font-size:.95rem;color:var(--ink-2);margin-top:6px}
+.gmeta b{font-weight:500;color:var(--ink-2)}
+.mini{height:4px;border-radius:99px;background:var(--rule);margin-top:9px;overflow:hidden;max-width:220px}
+.mini i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.chev{flex:none;width:9px;height:9px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);transform:rotate(45deg);margin:9px 4px 0}
+[aria-expanded="true"] .chev{transform:translateY(4px) rotate(-135deg)}
+.gbody{margin:0 0 22px 2px;padding:4px 0 2px 18px;border-left:2px solid var(--accent-soft)}
+.gbody h3{margin-top:22px}
+.gbody .hint{margin-bottom:10px}
+.gfoot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
 
+/* progress */
 .tally{display:flex;gap:40px;flex-wrap:wrap;margin:26px 0 8px}
 .tally div{min-width:120px}
 .tally b{display:block;font-weight:400;font-size:2.6rem;line-height:1;color:var(--accent)}
 .tally span{font-family:var(--sans);font-size:14px;color:var(--ink-2)}
-.bars{display:grid;grid-template-columns:auto 1fr auto;gap:12px 14px;align-items:center;font-size:.98rem}
+.bars{display:grid;grid-template-columns:minmax(0,auto) 1fr auto;gap:12px 14px;align-items:center;font-size:.98rem;margin-top:16px}
+.bars>span:first-child,.bars .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px}
 .bar{height:8px;border-radius:99px;background:var(--rule);overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
 .num{font-family:var(--sans);font-size:13px;color:var(--ink-3);white-space:nowrap}
 .wins li{align-items:baseline}
 .wins .when{flex:none;font-family:var(--sans);font-size:13px;color:var(--ink-3);min-width:62px}
-.wins .where{flex:none;font-family:var(--sans);font-size:13px;color:var(--ink-3)}
-.weeks{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;align-items:center}
-.dots{display:flex;gap:6px}
-.dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink-3)}
-.dots i.on{background:var(--accent);border-color:var(--accent)}
-.dots i.none{border-style:dashed;opacity:.5}
 
 .signin{max-width:380px;margin-top:30px}
 .signin .q span{font-family:var(--sans);font-size:14px}
@@ -129,8 +174,19 @@ textarea.field{width:100%;resize:vertical;min-height:72px;line-height:1.5}
 .toast span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .toast .link{color:var(--paper);flex:none}
 
-@media (max-width:480px){.add select.field{flex:1 1 100%}}
-@media (prefers-reduced-motion:no-preference){.enter{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
+.add.wide input[name=text]{flex:1 1 100%}
+.add.wide select.field{flex:1 1 0}
+@media (max-width:520px){
+  .add select.field{flex:1 1 100%}
+  .grid2{grid-template-columns:1fr}
+  .tally{gap:24px}
+  .gbody{padding-left:14px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .enter{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .chev{transition:transform .2s}
+  .gbody{animation:open .2s ease-out}@keyframes open{from{opacity:0}to{opacity:1}}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok" crossorigin="anonymous"></script>
 </head>
@@ -160,12 +216,12 @@ textarea.field{width:100%;resize:vertical;min-height:72px;line-height:1.5}
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <script>
 /* =====================================================================
-   SETUP — paste your Supabase project details here (see README.md).
+   SETUP — your Supabase project details (see README.md).
    Leave both blank to keep everything on this device only.
    Use the publishable (or "anon") key. NEVER the secret / service_role key.
    ===================================================================== */
-const SUPABASE_URL = 'https://ykipiudpvliomkpnofcq.supabase.co';   // e.g. 'https://abcdefghijkl.supabase.co'
-const SUPABASE_KEY = 'sb_publishable_1K-U5AGTc-vRFNj50fRJgQ__dyJhKzL';   // e.g. 'sb_publishable_...' or the long anon key
+const SUPABASE_URL = 'https://ykipiudpvliomkpnofcq.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1K-U5AGTc-vRFNj50fRJgQ__dyJhKzL';
 
 /* ---------- dates ---------- */
 const pad=n=>String(n).padStart(2,'0');
@@ -184,71 +240,88 @@ function weekKey(s=today()){
 function weekStart(key){const [y,w]=key.split('-W').map(Number);const j4=new Date(y,0,4);const dow=j4.getDay()||7;return new Date(y,0,4-dow+1+(w-1)*7)}
 const shiftWeek=(k,n)=>weekKey(iso(addDays(weekStart(k),7*n)));
 const weekLabel=k=>{const d=weekStart(k);return `Week of ${d.getDate()} ${MONTHS[d.getMonth()]}${d.getFullYear()!==new Date().getFullYear()?' '+d.getFullYear():''}`};
+const fmtD=s=>{if(!s)return '';const d=parseISO(s);return `${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}${d.getFullYear()!==new Date().getFullYear()?' '+d.getFullYear():''}`};
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(s,n)=>s.length>n?s.slice(0,n-1)+'…':s;
 const $=s=>document.querySelector(s);
 
 const AREAS=[
   ['presence','Inner life'],['career','Work'],['education','Education'],['health','Health'],
   ['money','Money'],['intellect','Reading & creating'],['ordinary','Relationships']
 ];
+const areaName=id=>(AREAS.find(a=>a[0]===id)||['','Other'])[1];
+const TODAY_MAX=3;
 
-/* ---------- data on this device ---------- */
+/* ---------- data ----------
+   goals: where you're headed       {id,text,area,why,due,done,doneDate}
+   steps: the actions that get there {id,text,goalId,week,day,done,doneDate}
+     week = 'YYYY-Www' when planned into a week, day = 'YYYY-MM-DD' when picked for a day.
+   A step is one object, so ticking it in Today also ticks it in This week and in its goal. */
 const KEY='the-study:simple:v1', OLD_KEY='the-study:v1';
-function fresh(){
-  return {name:'',today:{date:'',items:[],carried:[]},weeks:{},goals:[],meta:{updatedAt:0,owner:null}};
-}
-function fromOld(old){
-  // Brings over what was written in the earlier, bigger version.
+function fresh(){return {v:2,name:'',goals:[],steps:[],weeks:{},meta:{updatedAt:0,owner:null}}}
+const mkStep=(text,goalId,week='',day='')=>({id:uid(),text,goalId:goalId||null,week,day,done:false,doneDate:''});
+
+function fromV0(old){ // the earliest, bigger version
   if(!old||!old.state)return null;
-  const o=old.state,s=fresh();
-  s.name=(o.settings&&o.settings.name)||'';
-  if(o.today&&Array.isArray(o.today.items))s.today={date:o.today.date||'',items:o.today.items.map(i=>({id:i.id||uid(),text:i.text,done:!!i.done})),carried:o.today.carried||[]};
-  for(const [k,w] of Object.entries(o.weeks||{})){
-    s.weeks[k]={p1:w.p1||'',p2:w.p2||'',p3:w.p3||'',p1done:!!w.p1done,p2done:!!w.p2done,p3done:!!w.p3done,
-      good:[w.r_done,w.r_joy].filter(Boolean).join('\n'),hard:w.r_hard||'',next:w.r_carry||''};
+  const o=old.state,s={name:(o.settings&&o.settings.name)||'',today:{date:'',items:[]},weeks:{},goals:[]};
+  if(o.today&&Array.isArray(o.today.items))s.today={date:o.today.date||'',items:o.today.items.map(i=>({id:i.id||uid(),text:i.text,done:!!i.done}))};
+  for(const [k,w] of Object.entries(o.weeks||{}))s.weeks[k]={p1:w.p1||'',p2:w.p2||'',p3:w.p3||'',p1done:!!w.p1done,p2done:!!w.p2done,p3done:!!w.p3done,
+    good:[w.r_done,w.r_joy].filter(Boolean).join('\n'),hard:w.r_hard||'',next:w.r_carry||''};
+  if(Array.isArray(o.goals))s.goals=o.goals.filter(x=>!x.archived&&x.status!=='nolonger'&&x.title)
+    .map(x=>({id:x.id||uid(),text:x.title,area:x.area||'ordinary',done:x.status==='completed',doneDate:x.status==='completed'?(x.completedDate||''):''}));
+  return fromV1(s);
+}
+function fromV1(s){ // the version with fixed "priority 1-3" boxes
+  const out=fresh();
+  out.name=typeof s.name==='string'?s.name:'';
+  out.goals=(Array.isArray(s.goals)?s.goals:[]).filter(g=>g&&g.text).map(g=>({id:g.id||uid(),text:g.text,area:g.area||'ordinary',why:g.why||'',due:g.due||'',done:!!g.done,doneDate:g.doneDate||''}));
+  for(const [k,w] of Object.entries(s.weeks||{})){
+    out.weeks[k]={good:w.good||'',hard:w.hard||'',next:w.next||''};
+    for(const n of [1,2,3])if(w['p'+n]&&String(w['p'+n]).trim()){
+      const st=mkStep(String(w['p'+n]).trim(),null,k);st.done=!!w['p'+n+'done'];out.steps.push(st);
+    }
   }
-  if(Array.isArray(o.goals)){
-    const g=o.goals.filter(x=>!x.archived&&x.status!=='nolonger'&&x.title);
-    if(g.length)s.goals=g.map(x=>({id:x.id||uid(),text:x.title,area:x.area||'ordinary',done:x.status==='completed',doneDate:x.status==='completed'?(x.completedDate||''):''}));
+  const t=s.today;
+  if(t&&t.date&&Array.isArray(t.items))for(const i of t.items)if(i&&i.text){
+    const st=mkStep(i.text,null,weekKey(t.date),t.date);st.done=!!i.done;st.doneDate=i.done?t.date:'';out.steps.push(st);
   }
-  return s;
+  out.meta={...out.meta,...(s.meta||{})};
+  return out;
 }
 function normalize(s){
   if(!s||typeof s!=='object')return null;
-  if(s.state&&!s.goals&&!s.weeks)return fromOld(s);
+  if(s.state&&!s.goals&&!s.weeks)return fromV0(s);
+  if(s.v!==2)return fromV1(s);
   const f=fresh();
-  return {
-    name:typeof s.name==='string'?s.name:'',
-    today:s.today&&Array.isArray(s.today.items)?{date:s.today.date||'',items:s.today.items,carried:s.today.carried||[]}:f.today,
+  return {v:2,name:typeof s.name==='string'?s.name:'',
+    goals:Array.isArray(s.goals)?s.goals.filter(Boolean):[],
+    steps:Array.isArray(s.steps)?s.steps.filter(Boolean):[],
     weeks:s.weeks&&typeof s.weeks==='object'?s.weeks:{},
-    goals:Array.isArray(s.goals)?s.goals:[],
-    meta:{...f.meta,...(s.meta||{})}
-  };
+    meta:{...f.meta,...(s.meta||{})}};
 }
 function loadLocal(){
   let s=null;
   try{s=normalize(JSON.parse(localStorage.getItem(KEY)||'null'))}catch(e){}
-  if(!s){try{s=fromOld(JSON.parse(localStorage.getItem(OLD_KEY)||'null'))}catch(e){}}
+  if(!s){try{s=fromV0(JSON.parse(localStorage.getItem(OLD_KEY)||'null'))}catch(e){}}
   return s||fresh();
 }
 let state=loadLocal();
 
-// touch=false is for housekeeping (like rolling over to a new day) that shouldn't count as an edit.
+// touch=false is for housekeeping that shouldn't count as an edit.
 function save(touch=true){
   if(touch)state.meta.updatedAt=Date.now();
   try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
   if(touch)schedulePush();
 }
 
-function todayState(){
-  const t=state.today;
-  if(t.date!==today()){
-    const left=(t.items||[]).filter(i=>!i.done&&i.text).map(i=>i.text);
-    state.today={date:today(),items:[],carried:t.date?left.slice(0,3):[]};save(false);
-  }
-  return state.today;
-}
+const goalById=id=>id?state.goals.find(g=>g.id===id):null;
+const stepById=id=>state.steps.find(s=>s.id===id);
+const activeGoals=()=>state.goals.filter(g=>!g.done);
+const stepsOf=gid=>state.steps.filter(s=>s.goalId===gid);
+const todaySteps=()=>{const td=today();return state.steps.filter(s=>s.day===td)};
+function score(k){const ss=state.steps.filter(s=>s.week===k);return {done:ss.filter(s=>s.done).length,total:ss.length}}
+const pct=(a,b)=>b?Math.round(a/b*100):0;
 
 /* ---------- account sync (Supabase) ---------- */
 const CLOUD=!!(SUPABASE_URL&&SUPABASE_KEY);
@@ -294,47 +367,108 @@ async function syncNow(){
     const remote=data?normalize(data.data):null;
     const lt=state.meta.updatedAt||0, rt=remote?(remote.meta.updatedAt||0):-1;
     if(remote&&rt>lt){
-      // The account has newer changes (from another device): use them.
       state=remote;state.meta.owner=user.id;save(false);fillSettings();render();setStatus('synced');
-    }else if(!remote||lt>rt){await pushNow()}
+    }else if(!remote||lt>rt||data.data.v!==2){await pushNow()}
     else setStatus('synced');
   }catch(e){syncError(e)}
 }
 
-/* ---------- views ---------- */
-let tab='today',wk=weekKey(),mode='loading',lastTab=null;
+/* ---------- small pieces ---------- */
+let tab='today',wk=weekKey(),mode='loading',lastTab=null,lastGoal='',focusAfter=null;
+const openGoals=new Set();
 try{const t=sessionStorage.getItem('study-tab');if(['today','week','goals','progress'].includes(t))tab=t}catch(e){}
 const app=$('#app'),tabsEl=$('.tabs');
 
+function goalSelect(form){
+  const gs=activeGoals();if(!gs.length)return '';
+  const sel=gs.some(g=>g.id===lastGoal)?lastGoal:'';
+  return `<select class="field" name="goal" data-goalsel aria-label="Which goal does this serve?">
+    <option value="">Not tied to a goal</option>${gs.map(g=>`<option value="${g.id}" ${g.id===sel?'selected':''}>${esc(short(g.text,42))}</option>`).join('')}</select>`;
+}
+function tagFor(s){const g=goalById(s.goalId);return g?`<span class="tag">${esc(short(g.text,60))}</span>`:''}
+function stepRow(s,{tag=true,acts=''}={}){
+  return `<li class="${s.done?'done':''}"><input type="checkbox" class="check" data-act="sToggle" data-id="${s.id}" ${s.done?'checked':''} aria-label="Done: ${esc(s.text)}">
+    <div class="body"><span class="t">${esc(s.text)}</span><div class="mrow">${tag?tagFor(s):''}${acts?`<span class="acts">${acts}</span>`:''}</div></div></li>`;
+}
+const btn=(act,id,label,cls='x',extra='')=>`<button class="${cls}" data-act="${act}" data-id="${id}" ${extra}>${label}</button>`;
+const pickBtn=(s,act,label,extra='')=>`<button class="pick" data-act="${act}" data-id="${s.id}" ${extra} aria-label="${label}: ${esc(s.text)}"><span class="body"><span class="t">${esc(s.text)}</span><span class="mrow">${tagFor(s)}</span></span><span class="plus">${label}</span></button>`;
+const bar=(d,t,label)=>`<div class="bar" role="img" aria-label="${label||`${d} of ${t} done`}"><i style="width:${pct(d,t)}%"></i></div>`;
+
+/* ---------- Today ---------- */
 function vToday(){
-  const T=todayState();const h=new Date().getHours();
+  const td=today(),cw=weekKey(),d=new Date(),h=d.getHours();
   const hello=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-  const d=new Date();
-  const carried=(T.carried||[]).filter(c=>!T.items.some(i=>i.text===c));
+  const items=todaySteps(),room=items.length<TODAY_MAX;
+  const picks=state.steps.filter(s=>s.week===cw&&!s.done&&!s.day);
+  const left=state.steps.filter(s=>s.day&&s.day<td&&!s.done);
+  const ws=score(cw);
   return `<p class="date">${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]}</p>
   <h1 tabindex="-1">${hello}${state.name?', '+esc(state.name):''}.</h1>
+  ${ws.total?`<div class="path"><button class="link" data-act="goTab" data-t="week">This week</button><span>${ws.done} of ${ws.total} steps done</span>${bar(ws.done,ws.total)}</div>`:''}
   <section>
-    <h2>For today</h2>
-    <p class="hint">One to three things. That’s the whole list.</p>
-    ${T.items.length?`<ul class="list">${T.items.map(i=>`<li class="${i.done?'done':''}"><input type="checkbox" class="check" data-act="tToggle" data-id="${i.id}" ${i.done?'checked':''} aria-label="Done: ${esc(i.text)}"><span>${esc(i.text)}</span><button class="x" data-act="tRemove" data-id="${i.id}" aria-label="Remove ${esc(i.text)}">Remove</button></li>`).join('')}</ul>`:''}
-    ${T.items.length<3?`<form class="add" data-form="tAdd"><input class="field" name="text" maxlength="160" placeholder="${T.items.length?'Another thing, if it matters':'What would make today feel cared for?'}" aria-label="Add something for today"><button class="btn">Add</button></form>`:`<p class="hint" style="margin-top:14px">Three is plenty.</p>`}
-    ${carried.length&&T.items.length<3?`<p class="carry">Left from yesterday: ${carried.map(c=>`<button class="link" data-act="tCarry" data-text="${esc(c)}">${esc(c)}</button>`).join(', ')}</p>`:''}
-  </section>`;
+    <h2>Today’s focus</h2>
+    <p class="hint">Up to three steps. Pick from this week’s plan, or add one.</p>
+    ${items.length?`<ul class="list">${items.map(s=>stepRow(s,{acts:s.done?'':btn('sNotToday',s.id,'Not today')})).join('')}</ul>`:''}
+    ${room?`
+      ${picks.length?`<div class="sub"><h3>From this week’s plan</h3><div class="picks">${picks.slice(0,6).map(s=>pickBtn(s,'sToday','Do today')).join('')}</div></div>`:''}
+      <form class="add${state.goals.some(g=>!g.done)?' wide':''}" data-form="tAdd"><input class="field" name="text" maxlength="160" placeholder="${items.length?'Another step, if it matters':'A small step you’ll do today'}" aria-label="Add a step for today">${goalSelect()}<button class="btn">Add</button></form>`
+    :`<p class="hint" style="margin-top:14px">Three is plenty. Finish one or set it aside to make room.</p>`}
+    ${left.length?`<div class="sub"><h3>Still open from earlier</h3><ul class="list">${left.map(s=>stepRow(s,{acts:(room?btn('sToday',s.id,'Do today','x go'):'')+btn('sNotToday',s.id,'Back to the week')})).join('')}</ul></div>`:''}
+  </section>
+  ${!state.goals.length?`<div class="intro">
+    <h2>Start with a goal</h2>
+    <ol>
+      <li>In <b>Goals</b>, write what you’re working toward and why it matters.</li>
+      <li>Break each goal into small, concrete steps.</li>
+      <li>In <b>This week</b>, plan a few of those steps.</li>
+      <li>Here, pick up to three to do today.</li>
+    </ol>
+    <button class="btn" data-act="goTab" data-t="goals">Set your first goal</button>
+  </div>`:''}`;
 }
 
+/* ---------- This week ---------- */
 function vWeek(){
-  const w=state.weeks[wk]||{};const now=weekKey();
-  const prev=state.weeks[shiftWeek(wk,-1)]||{};
-  const prio=n=>`<div class="prio"><input type="checkbox" class="check" data-wbind="p${n}done" ${w['p'+n+'done']?'checked':''} aria-label="Priority ${n} done"><input class="field" data-wbind="p${n}" value="${esc(w['p'+n]||'')}" placeholder="${n===1?'The thing that matters most':'Something else that matters'}" aria-label="Priority ${n}"></div>`;
+  const cw=weekKey(),isNow=wk===cw,td=today();
+  const w=state.weeks[wk]||{},prevK=shiftWeek(wk,-1),prev=state.weeks[prevK]||{};
+  const steps=state.steps.filter(s=>s.week===wk),sc=score(wk);
+  const acts=s=>{
+    if(s.done)return '';
+    let a='';
+    if(isNow)a+=s.day===td?`<span class="pill">Today</span>`:btn('sToday',s.id,'Do today','x go');
+    return a+btn('sUnweek',s.id,s.goalId&&goalById(s.goalId)?'Not this week':'Remove');
+  };
+  const groups=[];
+  for(const g of state.goals){const ss=steps.filter(s=>s.goalId===g.id);if(ss.length)groups.push([g.text,ss])}
+  const loose=steps.filter(s=>!goalById(s.goalId));if(loose.length)groups.push([null,loose]);
+  const idle=activeGoals().filter(g=>!steps.some(s=>s.goalId===g.id));
+  const carry=state.steps.filter(s=>s.week===prevK&&!s.done);
   const q=(label,key,ph)=>`<label class="q"><span>${label}</span><textarea class="field" data-wbind="${key}" rows="2" placeholder="${ph}">${esc(w[key]||'')}</textarea></label>`;
-  return `<div class="weeknav"><button data-act="wShift" data-n="-1">Previous week</button>${wk!==now?`<button data-act="wNow">Back to this week</button>`:''}<button data-act="wShift" data-n="1">Next week</button></div>
-  <h1 tabindex="-1">${weekLabel(wk)}</h1>
+  return `<div class="weeknav"><button data-act="wShift" data-n="-1">Previous week</button>${!isNow?`<button data-act="wNow">Back to this week</button>`:''}<button data-act="wShift" data-n="1">Next week</button></div>
+  <h1 tabindex="-1">${isNow?'This week':weekLabel(wk)}</h1>
+  ${isNow?`<p class="date">${weekLabel(wk)}</p>`:''}
+  ${sc.total?`<div class="path"><span>${sc.done} of ${sc.total} steps done</span>${bar(sc.done,sc.total)}<span class="num">${pct(sc.done,sc.total)}%</span></div>`:''}
   <section>
-    <h2>What matters this week?</h2>
-    <p class="hint">Three at most. Unfinished isn’t failed.</p>
+    <h2>The plan</h2>
+    <p class="hint">A handful of steps that move your goals forward. Three to five makes a strong week.</p>
     ${prev.next&&prev.next.trim()?`<p class="lastweek"><em>Last week you wanted to bring in</em>${esc(prev.next).replace(/\n/g,'<br>')}</p>`:''}
-    ${prio(1)}${prio(2)}${prio(3)}
+    ${groups.length?groups.map(([name,ss])=>`<div class="group"><h3>${name?esc(name):'Not tied to a goal'}</h3><ul class="list">${ss.map(s=>stepRow(s,{tag:false,acts:acts(s)})).join('')}</ul></div>`).join('')
+      :`<p class="empty">Nothing planned yet. Pick steps from your goals below, or add one.</p>`}
+    <form class="add${state.goals.some(g=>!g.done)?' wide':''}" data-form="wAdd"><input class="field" name="text" maxlength="160" placeholder="Add a step to this week" aria-label="Add a step to this week">${goalSelect()}<button class="btn">Add</button></form>
   </section>
+  ${idle.length?`<section>
+    <h2>Goals with nothing planned</h2>
+    <p class="hint">Not every goal needs a step every week, but this is where to check.</p>
+    ${idle.map(g=>{const ready=stepsOf(g.id).filter(s=>!s.done&&s.week!==wk&&!(s.week&&s.week>wk));
+      return `<div class="group"><h3>${esc(g.text)}</h3>
+        ${ready.length?`<div class="picks">${ready.slice(0,3).map(s=>pickBtn(s,'sWeek','Plan it',`data-w="${wk}"`)).join('')}</div>`:''}
+        <p class="mrow" style="margin-top:8px"><button class="link" data-act="planFor" data-id="${g.id}">Write a new step for this goal</button></p></div>`}).join('')}
+  </section>`:''}
+  ${carry.length?`<section>
+    <h2>Unfinished last week</h2>
+    <p class="hint">Bring forward what still matters. Leave the rest.</p>
+    <ul class="list">${carry.map(s=>stepRow(s,{acts:btn('sCarry',s.id,'Move to this week','x go')})).join('')}</ul>
+  </section>`:''}
   <section>
     <h2>End-of-week check-in</h2>
     <p class="hint">Whenever you get to it.</p>
@@ -344,51 +478,88 @@ function vWeek(){
   </section>`;
 }
 
+/* ---------- Goals ---------- */
+function goalBlock(g){
+  const ss=stepsOf(g.id),d=ss.filter(s=>s.done).length,next=ss.find(s=>!s.done),open=openGoals.has(g.id),cw=weekKey(),td=today();
+  const meta=[ss.length?`${d} of ${ss.length} steps done`:'No steps yet',g.due&&!g.done?`by ${fmtD(g.due)}`:'',g.done?`achieved ${fmtD(g.doneDate)}`:''].filter(Boolean).join(', ');
+  const stepActs=s=>{
+    if(s.done)return '';
+    const st=s.day===td?`<span class="pill">Today</span>`:s.week===cw?`<span class="pill">This week</span>`+btn('sToday',s.id,'Do today','x go')
+      :btn('sWeek',s.id,'Plan this week','x go');
+    return st+btn('sRemove',s.id,'Remove');
+  };
+  const ordered=ss.filter(s=>!s.done).concat(ss.filter(s=>s.done));
+  return `<article class="goal${g.done?' done':''}">
+    <button class="ghead" data-act="gOpen" data-id="${g.id}" aria-expanded="${open}">
+      <span class="gtx"><span class="gt">${esc(g.text)}</span>
+        <span class="gmeta">${esc(meta)}${next&&!open&&!g.done?`<br>Next: <b>${esc(short(next.text,70))}</b>`:''}</span>
+        ${g.why&&!open&&!g.done?`<span class="gwhy">${esc(short(g.why,120))}</span>`:''}
+        ${ss.length&&!g.done?`<span class="mini"><i style="width:${pct(d,ss.length)}%"></i></span>`:''}</span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    ${open?`<div class="gbody">
+      <h3 style="margin-top:6px">Steps</h3>
+      <p class="hint">Concrete actions you could finish in a sitting or a day. Plan them into a week when you’re ready.</p>
+      ${ordered.length?`<ul class="list">${ordered.map(s=>stepRow(s,{tag:false,acts:stepActs(s)})).join('')}</ul>`:''}
+      <form class="add" data-form="sAdd" data-goal="${g.id}"><input class="field" name="text" maxlength="160" placeholder="${ss.length?'Another step':'First step, e.g. “Book the exam date”'}" aria-label="Add a step to this goal"><button class="btn">Add step</button></form>
+      <h3>Details</h3>
+      <label class="fl"><span>Goal</span><input class="field" data-gbind="text" data-id="${g.id}" value="${esc(g.text)}" maxlength="200"></label>
+      <label class="fl"><span>Why it matters</span><textarea class="field" data-gbind="why" data-id="${g.id}" rows="2" placeholder="The reason to come back to on a hard day">${esc(g.why||'')}</textarea></label>
+      <div class="grid2">
+        <label class="fl"><span>Life area</span><select class="field" data-gbind="area" data-id="${g.id}">${AREAS.map(([id,n])=>`<option value="${id}" ${id===g.area?'selected':''}>${n}</option>`).join('')}</select></label>
+        <label class="fl"><span>Aim to finish by (optional)</span><input type="date" class="field" data-gbind="due" data-id="${g.id}" value="${esc(g.due||'')}"></label>
+      </div>
+      <div class="gfoot">
+        ${btn('gDone',g.id,g.done?'Reopen goal':'Mark goal achieved','btn quiet')}
+        ${btn('gRemove',g.id,'Delete goal')}
+      </div>
+    </div>`:''}
+  </article>`;
+}
 function vGoals(){
-  const active=AREAS.filter(([id])=>state.goals.some(g=>g.area===id));
+  const areas=AREAS.filter(([id])=>state.goals.some(g=>g.area===id));
+  const stray=state.goals.filter(g=>!AREAS.some(a=>a[0]===g.area));
+  const list=gs=>gs.slice().sort((a,b)=>a.done-b.done).map(goalBlock).join('');
   return `<h1 tabindex="-1">Goals</h1>
-  <p class="hint" style="margin-top:6px">Directions, not deadlines. Tick one off when it’s done.</p>
-  <form class="add" data-form="gAdd"><input class="field" name="text" maxlength="200" placeholder="A new goal" aria-label="New goal">
+  <p class="hint" style="margin-top:6px">Where you’re headed. Open a goal to break it into steps you can plan into your week.</p>
+  <form class="add" data-form="gAdd"><input class="field" name="text" maxlength="200" placeholder="A goal you’re working toward" aria-label="New goal">
     <select class="field" name="area" aria-label="Life area">${AREAS.map(([id,n])=>`<option value="${id}">${n}</option>`).join('')}</select>
-    <button class="btn">Add</button></form>
-  ${active.length?active.map(([id,name])=>{const gs=state.goals.filter(g=>g.area===id).sort((a,b)=>a.done-b.done);
-    return `<div class="area"><h3>${name}</h3><ul class="list">${gs.map(g=>`<li class="${g.done?'done':''}"><input type="checkbox" class="check" data-act="gToggle" data-id="${g.id}" ${g.done?'checked':''} aria-label="Done: ${esc(g.text)}"><span>${esc(g.text)}</span><button class="x" data-act="gRemove" data-id="${g.id}" aria-label="Remove ${esc(g.text)}">Remove</button></li>`).join('')}</ul></div>`}).join('')
-  :`<p class="empty">No goals yet. Add one above whenever you’re ready.</p>`}`;
+    <button class="btn">Add goal</button></form>
+  ${areas.length||stray.length?areas.map(([id,name])=>`<div class="area"><h3>${name}</h3>${list(state.goals.filter(g=>g.area===id))}</div>`).join('')
+    +(stray.length?`<div class="area"><h3>Other</h3>${list(stray)}</div>`:'')
+  :`<p class="empty" style="margin-top:12px">No goals yet. Write one above. Something you’d be glad to have done in three months is a good size.</p>`}`;
 }
 
+/* ---------- Progress ---------- */
 function vProgress(){
-  const done=state.goals.filter(g=>g.done);
-  const now=weekKey();
-  const weeks=[];for(let i=0;i<8;i++)weeks.push(shiftWeek(now,-i));
-  let prios=0;for(const w of Object.values(state.weeks))for(const n of [1,2,3])if(w['p'+n]&&w['p'+n+'done'])prios++;
-  const areas=AREAS.filter(([id])=>state.goals.some(g=>g.area===id));
-  const areaName=id=>(AREAS.find(a=>a[0]===id)||['',''])[1];
-  const fmtD=s=>{if(!s)return '';const d=parseISO(s);return `${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}${d.getFullYear()!==new Date().getFullYear()?' '+d.getFullYear():''}`};
-  const wins=done.slice().sort((a,b)=>(b.doneDate||'').localeCompare(a.doneDate||''));
+  const cw=weekKey(),sc=score(cw);
+  const achieved=state.goals.filter(g=>g.done).sort((a,b)=>(b.doneDate||'').localeCompare(a.doneDate||''));
+  const allDone=state.steps.filter(s=>s.done).length;
+  const weeks=[];for(let i=0;i<8;i++)weeks.push(shiftWeek(cw,-i));
+  const active=activeGoals();
   return `<h1 tabindex="-1">Progress</h1>
   <p class="hint" style="margin-top:6px">Everything you’ve moved forward, in one place.</p>
   <div class="tally">
-    <div><b>${done.length}</b><span>goal${done.length===1?'':'s'} finished</span></div>
-    <div><b>${state.goals.length-done.length}</b><span>still going</span></div>
-    <div><b>${prios}</b><span>weekly priorit${prios===1?'y':'ies'} done</span></div>
+    <div><b>${sc.total?pct(sc.done,sc.total)+'%':'–'}</b><span>of this week’s plan done</span></div>
+    <div><b>${allDone}</b><span>step${allDone===1?'':'s'} finished</span></div>
+    <div><b>${achieved.length}</b><span>goal${achieved.length===1?'':'s'} achieved</span></div>
   </div>
   <section>
-    <h2>By life area</h2>
-    ${areas.length?`<div class="bars" style="margin-top:16px">${areas.map(([id,name])=>{const all=state.goals.filter(g=>g.area===id),d=all.filter(g=>g.done).length;
-      return `<span>${name}</span><div class="bar" role="img" aria-label="${d} of ${all.length} done"><i style="width:${all.length?Math.round(d/all.length*100):0}%"></i></div><span class="num">${d} of ${all.length}</span>`}).join('')}</div>`
-      :`<p class="empty">Add a goal in the Goals tab and it will show up here.</p>`}
+    <h2>Week by week</h2>
+    <p class="hint">How much of each week’s plan you finished. Around 85% is a strong week; nobody needs 100%.</p>
+    <div class="bars">${weeks.map(k=>{const s=score(k);
+      return `<span class="num" style="font-size:14px">${k===cw?'This week':weekLabel(k).replace('Week of ','')}</span>${s.total?bar(s.done,s.total):'<div class="bar" aria-label="Nothing planned"></div>'}<span class="num">${s.total?`${s.done} of ${s.total}`:'No plan'}</span>`}).join('')}</div>
   </section>
   <section>
-    <h2>Accomplished</h2>
-    ${wins.length?`<ul class="list wins" style="margin-top:14px">${wins.map(g=>`<li><span class="when">${fmtD(g.doneDate)||'Earlier'}</span><span>${esc(g.text)}</span><span class="where">${areaName(g.area)}</span></li>`).join('')}</ul>`
-      :`<p class="empty">Nothing ticked off yet. When you finish a goal, it lands here with the date.</p>`}
+    <h2>By goal</h2>
+    ${active.length?`<div class="bars">${active.map(g=>{const ss=stepsOf(g.id),d=ss.filter(s=>s.done).length;
+      return `<span class="lbl" title="${esc(g.text)}">${esc(g.text)}</span>${bar(d,ss.length)}<span class="num">${ss.length?`${d} of ${ss.length}`:'No steps'}</span>`}).join('')}</div>`
+      :`<p class="empty">Add a goal and its steps, and progress shows up here.</p>`}
   </section>
   <section>
-    <h2>Recent weeks</h2>
-    <p class="hint">Each dot is one weekly priority. Filled means done.</p>
-    <div class="weeks">${weeks.map(k=>{const w=state.weeks[k]||{};
-      const dots=[1,2,3].map(n=>w['p'+n]?`<i class="${w['p'+n+'done']?'on':''}" title="${esc(w['p'+n])}"></i>`:'').join('');
-      return `<span class="num" style="font-size:14px">${k===now?'This week':weekLabel(k).replace('Week of ','')}</span><div class="dots">${dots||'<i class="none"></i>'}</div>`}).join('')}</div>
+    <h2>Achieved</h2>
+    ${achieved.length?`<ul class="list wins" style="margin-top:14px">${achieved.map(g=>`<li><span class="when">${fmtD(g.doneDate)||'Earlier'}</span><div class="body"><span class="t">${esc(g.text)}</span><div class="mrow"><span class="num">${areaName(g.area)}, ${stepsOf(g.id).filter(s=>s.done).length} steps</span></div></div></li>`).join('')}</ul>`
+      :`<p class="empty">Nothing achieved yet. When you mark a goal achieved, it lands here with the date.</p>`}
   </section>`;
 }
 
@@ -403,13 +574,13 @@ function vSignIn(msg){
   </form></div>`;
 }
 
-// Remember what had keyboard focus so re-rendering doesn't throw it back to the top.
+/* ---------- rendering ---------- */
 function focusInfo(){
   const el=document.activeElement;
   if(!el||!app.contains(el))return null;
-  const parts=[...el.attributes].filter(a=>a.name.startsWith('data-')&&a.name!=='data-text').map(a=>`[${a.name}="${CSS.escape(a.value)}"]`);
+  const parts=[...el.attributes].filter(a=>a.name.startsWith('data-')).map(a=>`[${a.name}="${CSS.escape(a.value)}"]`);
   if(el.name)parts.push(`[name="${CSS.escape(el.name)}"]`);
-  if(!parts.length)return null;
+  if(!parts.length){const f=el.closest('form[data-form]');if(f&&el.tagName==='BUTTON')return {q:`form[data-form="${f.dataset.form}"]${f.dataset.goal?`[data-goal="${f.dataset.goal}"]`:''} input[name=text]`}; return null}
   let sel=null;try{if(typeof el.selectionStart==='number')sel=[el.selectionStart,el.selectionEnd]}catch(e){}
   return {q:el.tagName.toLowerCase()+parts.join(''),sel};
 }
@@ -419,9 +590,10 @@ function render(){
   const f=focusInfo();
   const enter=lastTab!==tab;lastTab=tab;
   app.innerHTML=`<div class="view${enter?' enter':''}">${tab==='today'?vToday():tab==='week'?vWeek():tab==='goals'?vGoals():vProgress()}</div>`;
-  if(f){
-    const n=app.querySelector(f.q);
-    if(n){n.focus({preventScroll:true});if(f.sel)try{n.setSelectionRange(f.sel[0],f.sel[1])}catch(e){}}
+  const target=focusAfter||(f&&f.q);focusAfter=null;
+  if(target){
+    const n=app.querySelector(target);
+    if(n){n.focus({preventScroll:!focusAfter&&!!f});if(f&&f.sel&&target===f.q)try{n.setSelectionRange(f.sel[0],f.sel[1])}catch(e){}}
     else{const h=app.querySelector('h1');if(h)h.focus({preventScroll:true})}
   }
 }
@@ -430,13 +602,8 @@ function fillSettings(){
   $('#account').hidden=!user;
   if(user)$('#who').textContent=user.email||'your account';
 }
-function showApp(){
-  mode='app';tabsEl.hidden=false;$('#foot').hidden=false;fillSettings();render();
-}
-function showSignIn(msg){
-  mode='signin';tabsEl.hidden=true;$('#foot').hidden=true;hideToast();
-  app.innerHTML=vSignIn(msg);
-}
+function showApp(){mode='app';tabsEl.hidden=false;$('#foot').hidden=false;fillSettings();render()}
+function showSignIn(msg){mode='signin';tabsEl.hidden=true;$('#foot').hidden=true;hideToast();app.innerHTML=vSignIn(msg)}
 
 /* ---------- undo ---------- */
 let undoFn=null,toastTimer=null;
@@ -450,11 +617,13 @@ $('#toast').addEventListener('click',e=>{
   if(!e.target.closest('[data-undo]')||!undoFn)return;
   undoFn();save();render();hideToast();
 });
+function snapshot(){const s=JSON.stringify({g:state.goals,s:state.steps});return ()=>{const x=JSON.parse(s);state.goals=x.g;state.steps=x.s}}
 
 /* ---------- actions ---------- */
 function selectTab(t,focus){
   tab=t;try{sessionStorage.setItem('study-tab',tab)}catch(e){}
-  render();if(focus)tabsEl.querySelector(`[data-tab="${t}"]`).focus();
+  if(t==='week')wk=weekKey();
+  render();window.scrollTo(0,0);if(focus)tabsEl.querySelector(`[data-tab="${t}"]`).focus();
 }
 tabsEl.addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b)selectTab(b.dataset.tab)});
 tabsEl.addEventListener('keydown',e=>{
@@ -464,52 +633,86 @@ tabsEl.addEventListener('keydown',e=>{
   e.preventDefault();selectTab(ids[i],true);
 });
 app.addEventListener('click',e=>{
-  const el=e.target.closest('[data-act]');if(!el)return;const id=el.dataset.id;
+  const el=e.target.closest('[data-act]');if(!el)return;
+  const id=el.dataset.id,s=id&&stepById(id),g=id&&goalById(id);
   const acts={
-    tToggle(){const i=todayState().items.find(x=>x.id===id);if(i)i.done=!i.done},
-    tRemove(){
-      const T=todayState(),at=T.items.findIndex(x=>x.id===id);if(at<0)return;
-      const [it]=T.items.splice(at,1);
-      toast(`Removed “${it.text}”`,()=>{const T=todayState();T.items.splice(Math.min(at,T.items.length),0,it)});
+    sToggle(){if(s){s.done=!s.done;s.doneDate=s.done?today():''}},
+    sToday(){
+      if(!s)return 'view';
+      if(todaySteps().filter(x=>x.id!==s.id).length>=TODAY_MAX){toast('Today already has three steps. Finish or set one aside first.');return 'view'}
+      s.day=today();s.week=weekKey();
     },
-    tCarry(){const T=todayState();if(T.items.length<3)T.items.push({id:uid(),text:el.dataset.text,done:false})},
-    gToggle(){const g=state.goals.find(x=>x.id===id);if(g){g.done=!g.done;g.doneDate=g.done?today():''}},
+    sNotToday(){if(s)s.day=''},
+    sWeek(){if(s){s.week=el.dataset.w||weekKey();s.day=''}},
+    sCarry(){if(s){s.week=wk;s.day=''}},
+    sUnweek(){
+      if(!s)return;const goal=goalById(s.goalId);
+      if(goal){const u=snapshot();s.week='';s.day='';toast(`Moved back to “${short(goal.text,30)}”`,u)}
+      else{const u=snapshot();state.steps=state.steps.filter(x=>x!==s);toast(`Removed “${short(s.text,30)}”`,u)}
+    },
+    sRemove(){if(s){const u=snapshot();state.steps=state.steps.filter(x=>x!==s);toast(`Removed “${short(s.text,30)}”`,u)}},
+    gOpen(){if(g){const was=openGoals.has(g.id);openGoals.clear();if(!was)openGoals.add(g.id)}return 'view'},
+    gDone(){
+      if(!g)return;g.done=!g.done;g.doneDate=g.done?today():'';
+      if(g.done){openGoals.delete(g.id);toast('Goal achieved. You’ll find it in Progress.')}
+    },
     gRemove(){
-      const at=state.goals.findIndex(x=>x.id===id);if(at<0)return;
-      const [g]=state.goals.splice(at,1);
-      toast(`Removed “${g.text}”`,()=>{state.goals.splice(Math.min(at,state.goals.length),0,g)});
+      if(!g)return;const u=snapshot();
+      state.steps=state.steps.filter(x=>x.goalId!==g.id||x.week||x.done); // drop unplanned steps
+      state.steps.forEach(x=>{if(x.goalId===g.id)x.goalId=null});       // keep planned/finished ones as history
+      state.goals=state.goals.filter(x=>x!==g);openGoals.delete(g.id);
+      toast(`Deleted “${short(g.text,30)}”`,u);
     },
+    planFor(){lastGoal=id;focusAfter='[data-form="wAdd"] input[name=text]';return 'view'},
+    goTab(){selectTab(el.dataset.t);return 'none'},
     wShift(){wk=shiftWeek(wk,+el.dataset.n);return 'view'},
     wNow(){wk=weekKey();return 'view'}
   };
   const a=acts[el.dataset.act];if(!a)return;
-  const r=a();if(r!=='view')save();render();
+  const r=a();if(r==='none')return;if(r!=='view')save();render();
 });
 app.addEventListener('submit',async e=>{
   e.preventDefault();const f=e.target;const val=n=>{const x=f.querySelector(`[name=${n}]`);return x?x.value:''};
   if(f.dataset.form==='signIn'){
-    const btn=f.querySelector('button'),err=f.querySelector('.err');
-    btn.disabled=true;btn.textContent='Signing in…';err.textContent='';
+    const b=f.querySelector('button'),err=f.querySelector('.err');
+    b.disabled=true;b.textContent='Signing in…';err.textContent='';
     const {error}=await sb.auth.signInWithPassword({email:val('email').trim(),password:val('password')});
     if(error){
-      btn.disabled=false;btn.textContent='Sign in';
+      b.disabled=false;b.textContent='Sign in';
       err.textContent=/invalid/i.test(error.message)?'That email and password don’t match an account. Check them and try again.'
         :navigator.onLine?`Sign-in didn’t work: ${error.message}`:'You’re offline. Connect to the internet and try again.';
     }
-    return; // a successful sign-in is picked up by onAuth()
+    return;
   }
   const text=val('text').trim();if(!text)return;
-  if(f.dataset.form==='tAdd'){const T=todayState();if(T.items.length<3)T.items.push({id:uid(),text,done:false})}
-  if(f.dataset.form==='gAdd'){state.goals.push({id:uid(),text,area:val('area'),done:false})}
+  const goal=goalById(val('goal'))?val('goal'):null;
+  const form=f.dataset.form;
+  if(form==='tAdd'){if(todaySteps().length>=TODAY_MAX)return;state.steps.push(mkStep(text,goal,weekKey(),today()))}
+  if(form==='wAdd'){state.steps.push(mkStep(text,goal,wk))}
+  if(form==='sAdd'){state.steps.push(mkStep(text,f.dataset.goal))}
+  if(form==='gAdd'){
+    const ng={id:uid(),text,area:val('area'),why:'',due:'',done:false,doneDate:''};
+    state.goals.push(ng);openGoals.clear();openGoals.add(ng.id);
+    focusAfter=`[data-form="sAdd"][data-goal="${ng.id}"] input[name=text]`;
+    save();render();toast('Goal added. Now add its first step.');return;
+  }
   save();render();
-  const again=app.querySelector(`[data-form="${f.dataset.form}"] input[name=text]`);if(again)again.focus();
+  const again=app.querySelector(`[data-form="${form}"]${f.dataset.goal?`[data-goal="${f.dataset.goal}"]`:''} input[name=text]`);if(again)again.focus();
 });
-function bindWeek(el){
-  const k=el.dataset.wbind;const w=state.weeks[wk]=state.weeks[wk]||{};
-  w[k]=el.type==='checkbox'?el.checked:el.value;save();
-}
-app.addEventListener('input',e=>{if(e.target.dataset.wbind&&e.target.type!=='checkbox')bindWeek(e.target)});
-app.addEventListener('change',e=>{if(e.target.dataset.wbind&&e.target.type==='checkbox')bindWeek(e.target)});
+app.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.wbind){const w=state.weeks[wk]=state.weeks[wk]||{};w[t.dataset.wbind]=t.value;save()}
+  if(t.dataset.gbind&&(t.dataset.gbind==='text'||t.dataset.gbind==='why')){const g=goalById(t.dataset.id);if(g){if(t.dataset.gbind==='why'||t.value.trim())g[t.dataset.gbind]=t.value;save()}}
+});
+app.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.matches('[data-goalsel]'))lastGoal=t.value;
+  if(t.dataset.gbind){
+    const g=goalById(t.dataset.id);if(!g)return;
+    if(t.dataset.gbind==='text'){g.text=t.value.trim()||g.text}else g[t.dataset.gbind]=t.value;
+    save();render();
+  }
+});
 
 /* ---------- settings and backup ---------- */
 $('#nameField').addEventListener('input',e=>{state.name=e.target.value.trim();save();render()});
@@ -539,7 +742,7 @@ $('#signOutBtn').addEventListener('click',async()=>{
 /* ---------- keeping things current ---------- */
 document.addEventListener('visibilitychange',()=>{
   if(document.visibilityState!=='visible'||mode!=='app')return;
-  render();syncNow(); // catches a new day, and changes made on another device
+  render();syncNow();
 });
 window.addEventListener('online',()=>{if(user)syncNow()});
 window.addEventListener('pagehide',()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}});
@@ -548,9 +751,9 @@ window.addEventListener('pagehide',()=>{try{localStorage.setItem(KEY,JSON.string
 function onAuth(event,session){
   const u=session&&session.user;
   if(!u){if(event==='INITIAL_SESSION'||event==='SIGNED_OUT'){user=null;showSignIn()}return}
-  if(user&&user.id===u.id)return; // token refreshes etc.
+  if(user&&user.id===u.id)return;
   user=u;
-  if(state.meta.owner&&state.meta.owner!==u.id)state=fresh(); // never mix two people's data
+  if(state.meta.owner&&state.meta.owner!==u.id)state=fresh();
   state.meta.owner=u.id;save(false);
   showApp();syncNow();
 }
@@ -562,7 +765,6 @@ function onAuth(event,session){
     return;
   }
   sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
-  // Supabase advises not calling it from inside this callback, so hand off first.
   sb.auth.onAuthStateChange((event,session)=>setTimeout(()=>onAuth(event,session),0));
 })();
 </script>
